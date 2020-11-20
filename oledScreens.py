@@ -68,8 +68,8 @@ class OLEDSCREENS:
         realPower = ''
         reactivePower = ''
         apparentPower = ''
-        
         try:
+
             x1 = resp1.index('V')
             x2 = resp1.index('A')
             x3 = resp1.index('KW')
@@ -88,7 +88,7 @@ class OLEDSCREENS:
             oledExp.setCursor(4, 0)
             oledExp.write("RES = " + str(resistance) + " Ohm")
         except ValueError:
-            pass
+            self.HashOneResponsefailMsg()
         except:
             pass
 
@@ -106,7 +106,23 @@ class OLEDSCREENS:
             oledExp.setCursor(7, 0)
             oledExp.write("S = " + str(apparentPower) + " KVA")
         except ValueError:
+            self.HashTwoResponsefailMsg()
+        except:
             pass
+
+    def HashOneResponsefailMsg(self):
+        try:
+            oledExp.clear()
+            oledExp.setCursor(3,0)
+            oledExp.write("#01 Response not received from analyzer")
+        except:
+            pass
+
+    def HashTwoResponsefailMsg(self):
+        try:
+            oledExp.clear()
+            oledExp.setCursor(3,0)
+            oledExp.write("#02 Response not received from analyzer")
         except:
             pass
 
