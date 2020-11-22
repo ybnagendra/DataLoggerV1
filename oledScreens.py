@@ -88,7 +88,7 @@ class OLEDSCREENS:
             realPower = resp2[y1 + 3:y2 - 1]
             reactivePower = resp2[y2 + 4:y3 - 1]
             apparentPower = resp2[y3 + 4:]
-
+            self.ClearAnalyserData()
             oledExp.setCursor(1, 0)
             oledExp.write("VOLTAGE = " + str(voltage) + " V")
             oledExp.setCursor(2, 0)
@@ -112,7 +112,7 @@ class OLEDSCREENS:
         try:
             oledExp.clear()
             oledExp.setCursor(3,0)
-            oledExp.write("#Analyser Response not")
+            oledExp.write("Analyser Response not")
             oledExp.setCursor(4, 0)
             oledExp.write("received")
         except:
@@ -143,6 +143,24 @@ class OLEDSCREENS:
             oledExp.write(z)
             oledExp.setCursor(4, 0)
             oledExp.write(w)
+        except:
+            pass
+    def ClearAnalyserData(self):
+        try:
+            oledExp.setCursor(1, 0)
+            oledExp.write("VOLTAGE =            ")
+            oledExp.setCursor(2, 0)
+            oledExp.write("CURRENT =            ")
+            oledExp.setCursor(3, 0)
+            oledExp.write("POWER =              ")
+            oledExp.setCursor(4, 0)
+            oledExp.write("RES =                ")
+            oledExp.setCursor(5, 0)
+            oledExp.write("P =                  ")
+            oledExp.setCursor(6, 0)
+            oledExp.write("Q =                  ")
+            oledExp.setCursor(7, 0)
+            oledExp.write("S =                  ")
         except:
             pass
 
